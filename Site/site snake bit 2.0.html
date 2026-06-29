@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snack Bit — Pausa pro Conhecimento</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #1a73e8;
+    --laranja: #ff6d00;
+    --amarelo: #ffd000;
+    --vermelho: #ff3d3d;
+    --roxo: #7b2fff;
+    --preto: #0c0c0e;
+    --branco: #f5f5f0;
+    --cinza: #141423; /* Tom de azul escuro acinzentado para o contraste */
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    cursor: none; /* Desativa o cursor padrão */
+  }
+
+  /* CURSOR CUSTOMIZADO (MIRA CYBERPUNK TRACEJADA) */
+  .cursor {
+    width: 0; height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 12px solid var(--laranja);
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    animation: rotateCursor 4s linear infinite;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 2px dashed var(--amarelo);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, transform 0.08s ease;
+    mix-blend-mode: difference;
+  }
+
+  /* Efeito do cursor ao passar em elementos interativos */
+  .cursor-hover .cursor {
+    border-bottom-color: var(--azul);
+  }
+  .cursor-hover .cursor-ring {
+    width: 50px;
+    height: 50px;
+    border-color: var(--laranja);
+    border-style: double;
+  }
+
+  @keyframes rotateCursor {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(12, 12, 14, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--amarelo);
+    letter-spacing: 0.05em;
+  }
+  .nav-logo span { color: var(--azul); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: rgba(245,245,240,0.6);
+    font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+    font-family: 'Space Mono', monospace;
+  }
+  .nav-links a:hover { color: var(--amarelo); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; place-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 50%, rgba(26,115,232,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 30%, rgba(255,109,0,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 60% at 60% 80%, rgba(255,208,0,0.15) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 1100px; width: 100%; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: rgba(255, 208, 0, 0.1); border: 1px solid rgba(255, 208, 0, 0.3);
+    color: var(--amarelo); padding: 0.4rem 1rem; border-radius: 99px;
+    font-family: 'Space Mono', monospace; font-size: 0.75rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 2rem;
+    animation: fadeDown 0.8s ease both;
+  }
+  .hero-tag::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--amarelo); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 8vw, 7.5rem);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    animation: fadeDown 0.9s 0.1s ease both;
+  }
+  .hero h1 .accent-azul { color: var(--azul); }
+  .hero h1 .accent-laranja { color: var(--laranja); }
+  .hero h1 .accent-amarelo { color: var(--amarelo); -webkit-text-stroke: 2px var(--amarelo); color: transparent; }
+  .hero-sub {
+    margin-top: 2rem; max-width: 560px;
+    font-size: 1.05rem; line-height: 1.7;
+    color: rgba(245,245,240,0.65);
+    animation: fadeDown 1s 0.2s ease both;
+  }
+  .hero-cta {
+    margin-top: 3rem; display: flex; gap: 1.2rem; flex-wrap: wrap;
+    animation: fadeDown 1s 0.3s ease both;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--amarelo); color: var(--preto);
+    padding: 0.85rem 2rem; border-radius: 8px;
+    font-family: 'Space Mono', monospace; font-size: 0.85rem;
+    font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 0 0 rgba(2ffd, 208, 0, 0.4);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 208, 0, 0.35);
+  }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: transparent; color: var(--branco);
+    padding: 0.85rem 2rem; border-radius: 8px;
+    font-family: 'Space Mono', monospace; font-size: 0.85rem;
+    font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    text-decoration: none; border: 1px solid rgba(255,255,255,0.2);
+    cursor: none; transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--azul); background: rgba(26, 115, 232, 0.05); }
+
+  .hero-blocks {
+    position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    animation: fadeLeft 1.2s 0.4s ease both;
+  }
+  .block-card {
+    width: 100px; height: 100px; border-radius: 16px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.4rem; font-family: 'Space Mono', monospace; font-size: 0.7rem;
+    font-weight: 700; letter-spacing: 0.05em; color: white;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    animation: float 3s ease-in-out infinite;
+  }
+  .block-card:nth-child(2) { animation-delay: 0.5s; }
+  .block-card:nth-child(3) { animation-delay: 1s; }
+  .block-card:nth-child(4) { animation-delay: 1.5s; }
+  .block-card .icon { font-size: 2.2rem; }
+  .bc-frente { background: var(--azul); }
+  .bc-virar { background: var(--laranja); }
+  .bc-repetir { background: var(--amarelo); color: #000; }
+  .bc-fim { background: var(--vermelho); }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translate(40px, -50%); }
+    to { opacity: 1; transform: translate(0, -50%); }
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 2rem 3rem;
+    display: flex; justify-content: center; gap: 6rem; flex-wrap: wrap;
+    background: rgba(255,255,255,0.01);
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 900;
+    line-height: 1; letter-spacing: -0.03em;
+  }
+  .stat-num.laranja { color: var(--laranja); }
+  .stat-num.azul { color: var(--azul); }
+  .stat-num.amarelo { color: var(--amarelo); }
+  .stat-label {
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(245,245,240,0.45); margin-top: 0.3rem;
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* SECTIONS */
+  section { padding: 7rem 3rem; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Space Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--amarelo); margin-bottom: 1.2rem;
+  }
+  .section-tag::before {
+    content: ''; width: 20px; height: 2px; background: var(--amarelo);
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900; letter-spacing: -0.03em; line-height: 1.05;
+    max-width: 700px;
+  }
+  .section-body {
+    font-size: 1rem; line-height: 1.8;
+    color: rgba(245,245,240,0.65); max-width: 600px; margin-top: 1.2rem;
+  }
+
+  /* PROBLEMA */
+  .problema { background: var(--cinza); }
+  .problema-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .problema-pills { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+  .pill {
+    padding: 0.5rem 1.1rem; border-radius: 99px; font-size: 0.8rem;
+    font-family: 'Space Mono', monospace; font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .pill-red { background: rgba(255,61,61,0.15); color: #ff7070; border: 1px solid rgba(255,61,61,0.3); }
+  .pill-yellow { background: rgba(255,208,0,0.12); color: var(--amarelo); border: 1px solid rgba(255,208,0,0.3); }
+  .pill-blue { background: rgba(26,115,232,0.15); color: #80b3ff; border: 1px solid rgba(26,115,232,0.3); }
+  .problema-visual {
+    position: relative; padding: 2rem;
+  }
+  .biopoder-card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 20px; padding: 2rem; position: relative; overflow: hidden;
+  }
+  .biopoder-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(26, 115, 232, 0.1), transparent);
+  }
+  .biopoder-label {
+    font-family: 'Space Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--azul); margin-bottom: 1rem;
+  }
+  .biopoder-quote {
+    font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800;
+    line-height: 1.3; color: var(--branco);
+  }
+  .biopoder-author {
+    margin-top: 1.5rem; font-size: 0.8rem;
+    color: rgba(245,245,240,0.4); font-family: 'Space Mono', monospace;
+  }
+
+  /* SOLUÇÃO */
+  .solucao-inner { max-width: 1100px; margin: 0 auto; }
+  .solucao-header { margin-bottom: 4rem; }
+  .cards-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .feature-card {
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px; padding: 2.5rem;
+    transition: transform 0.3s, border-color 0.3s, background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .feature-card::after {
+    content: ''; position: absolute; inset: 0; opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .feature-card:hover { transform: translateY(-6px); }
+  .feature-card.laranja-c { border-color: rgba(255,109,0,0.25); }
+  .feature-card.laranja-c:hover { background: rgba(255,109,0,0.07); border-color: rgba(255,109,0,0.5); }
+  .feature-card.azul-c { border-color: rgba(26,115,232,0.25); }
+  .feature-card.azul-c:hover { background: rgba(26,115,232,0.07); border-color: rgba(26,115,232,0.5); }
+  .feature-card.amarelo-c { border-color: rgba(255,208,0,0.25); }
+  .feature-card.amarelo-c:hover { background: rgba(255,208,0,0.07); border-color: rgba(255,208,0,0.5); }
+  .feature-card.roxo-c { border-color: rgba(123,47,255,0.25); }
+  .feature-card.roxo-c:hover { background: rgba(123,47,255,0.07); border-color: rgba(123,47,255,0.5); }
+  .feature-card.vermelho-c { border-color: rgba(255,61,61,0.25); }
+  .feature-card.vermelho-c:hover { background: rgba(255,61,61,0.07); border-color: rgba(255,61,61,0.5); }
+  .feature-card.branco-c { border-color: rgba(255,255,255,0.15); }
+  .feature-card.branco-c:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); }
+  .card-icon { font-size: 2.5rem; margin-bottom: 1.2rem; }
+  .card-title {
+    font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800;
+    margin-bottom: 0.8rem;
+  }
+  .card-body { font-size: 0.9rem; line-height: 1.7; color: rgba(245,245,240,0.6); }
+
+  /* BLOCOS */
+  .blocos-section { background: var(--cinza); }
+  .blocos-inner { max-width: 1100px; margin: 0 auto; }
+  .blocos-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem;
+    margin-top: 3rem;
+  }
+  .bloco {
+    aspect-ratio: 1; border-radius: 18px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.6rem; font-family: 'Space Mono', monospace; font-size: 0.75rem;
+    font-weight: 700; letter-spacing: 0.05em; color: white;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: none;
+  }
+  .bloco:hover { transform: scale(1.08) rotate(-2deg); }
+  .bloco .b-icon { font-size: 2.5rem; }
+  .bloco.frente { background: linear-gradient(135deg, #1a73e8, #0d47a1); box-shadow: 0 8px 30px rgba(26,115,232,0.3); }
+  .bloco.virar-d { background: linear-gradient(135deg, #ff6d00, #b34d00); box-shadow: 0 8px 30px rgba(255,109,0,0.3); }
+  .bloco.virar-e { background: linear-gradient(135deg, #ff9100, #ff6d00); box-shadow: 0 8px 30px rgba(255,145,0,0.3); }
+  .bloco.repetir { background: linear-gradient(135deg, #ffd000, #ffb300); box-shadow: 0 8px 30px rgba(255,208,0,0.3); color: #000; }
+  .bloco.fim { background: linear-gradient(135deg, #ff3d3d, #b71c1c); box-shadow: 0 8px 30px rgba(255,61,61,0.3); }
+  .bloco.led { background: linear-gradient(135deg, #7b2fff, #4a148c); box-shadow: 0 8px 30px rgba(123,47,255,0.3); }
+  .bloco.som { background: linear-gradient(135deg, #ec407a, #880e4f); box-shadow: 0 8px 30px rgba(236,64,122,0.3); }
+  .bloco.inicio { background: linear-gradient(135deg, #00acc1, #006064); box-shadow: 0 8px 30px rgba(0,172,193,0.3); }
+
+  .blocos-desc {
+    margin-top: 3rem; padding: 2rem; border-radius: 16px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+    display: flex; gap: 2rem; align-items: flex-start;
+  }
+  .blocos-desc-icon { font-size: 2rem; flex-shrink: 0; }
+  .blocos-desc-text { font-size: 0.9rem; line-height: 1.7; color: rgba(245,245,240,0.65); }
+  .blocos-desc-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--amarelo); }
+
+  /* ROBO */
+  .robo-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .robo-visual {
+    position: relative;
+  }
+  .robo-box {
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,208,0,0.15);
+    border-radius: 24px; padding: 2rem; font-family: 'Space Mono', monospace;
+    font-size: 0.8rem; line-height: 1.8; color: rgba(245,245,240,0.7);
+    position: relative; overflow: hidden;
+  }
+  .robo-box::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--amarelo), var(--azul), var(--laranja));
+  }
+  .code-label {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--amarelo); margin-bottom: 1rem; display: block;
+  }
+  .code-line { display: flex; gap: 1rem; }
+  .code-num { color: rgba(245,245,240,0.2); min-width: 20px; text-align: right; }
+  .code-kw { color: var(--azul); }
+  .code-fn { color: var(--laranja); }
+  .code-str { color: var(--amarelo); }
+  .code-comment { color: rgba(245,245,240,0.3); font-style: italic; }
+  
+  .esp-badge {
+    margin-top: 1.5rem; padding: 0.8rem 1.2rem; background: rgba(26, 115, 232, 0.05);
+    border: 1px solid rgba(26, 115, 232, 0.15); border-radius: 10px;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .esp-badge-icon { font-size: 1.5rem; }
+  .esp-badge-text { font-size: 0.8rem; line-height: 1.5; color: rgba(245,245,240,0.7); }
+  .esp-badge-title { color: var(--azul); font-weight: 700; }
+
+  .robo-specs { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2.5rem; }
+  .spec-item {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1.2rem; border-radius: 14px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.2s;
+  }
+  .spec-item:hover { border-color: rgba(255, 208, 0, 0.25); }
+  .spec-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px;
+  }
+  .spec-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .spec-body { font-size: 0.85rem; color: rgba(245,245,240,0.55); line-height: 1.5; }
+
+  /* PESQUISA */
+  .pesquisa-section { background: var(--cinza); }
+  .pesquisa-inner { max-width: 1100px; margin: 0 auto; }
+  .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  .chart-card {
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px; padding: 2rem;
+  }
+  .chart-title {
+    font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--amarelo); margin-bottom: 1.5rem;
+  }
+  .bar-chart { display: flex; flex-direction: column; gap: 0.9rem; }
+  .bar-row { display: flex; align-items: center; gap: 1rem; }
+  .bar-label { font-size: 0.78rem; color: rgba(245,245,240,0.6); min-width: 170px; }
+  .bar-track { flex: 1; height: 10px; background: rgba(255,255,255,0.05); border-radius: 99px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 99px; transition: width 1.5s ease; }
+  .bar-pct { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: rgba(245,245,240,0.5); min-width: 42px; text-align: right; }
+
+  .conhecimento-table { width: 100%; margin-top: 3rem; border-collapse: collapse; }
+  .conhecimento-table th {
+    font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(245,245,240,0.4); padding: 0.8rem 1rem;
+    text-align: left; border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .conhecimento-table td {
+    padding: 1rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 0.9rem;
+  }
+  .conhecimento-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .num-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 10px;
+    font-family: 'Syne', sans-serif; font-weight: 900; font-size: 1rem;
+  }
+
+  /* CONCLUSÃO */
+  .conclusao {
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, rgba(255,208,0,0.06) 0%, rgba(26,115,232,0.06) 50%, rgba(255,109,0,0.06) 100%);
+  }
+  .conclusao::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(255,208,0,0.04), transparent);
+  }
+  .conclusao-inner { max-width: 800px; margin: 0 auto; text-align: center; position: relative; }
+  .conclusao-title {
+    font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 900; letter-spacing: -0.03em; line-height: 1.05;
+    margin-bottom: 1.5rem;
+  }
+  .conclusao-body { font-size: 1.05rem; line-height: 1.8; color: rgba(245,245,240,0.7); margin-bottom: 2.5rem; }
+  .conclusao-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-bottom: 3rem; }
+  .ctag {
+    padding: 0.5rem 1.2rem; border-radius: 99px;
+    font-family: 'Space Mono', monospace; font-size: 0.75rem;
+    border: 1px solid rgba(255,255,255,0.15); color: rgba(245,245,240,0.7);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .ctag:hover { border-color: var(--amarelo); color: var(--amarelo); }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem; border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo { font-family: 'Space Mono', monospace; font-size: 1rem; color: var(--amarelo); }
+  .footer-credits { font-size: 0.8rem; color: rgba(245,245,240,0.3); font-family: 'Space Mono', monospace; text-align: right; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero-blocks { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .stats-bar { gap: 2.5rem; padding: 1.5rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .blocos-grid { grid-template-columns: repeat(3, 1fr); }
+    .problema-inner, .robo-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .charts-row { grid-template-columns: 1fr; }
+    .bar-label { min-width: 130px; font-size: 0.72rem; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-credits { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Snack<span>Bit</span></div>
+  <ul class="nav-links">
+    <li><a href="#problema">Problema</a></li>
+    <li><a href="#solucao">Solução</a></li>
+    <li><a href="#blocos">Blocos</a></li>
+    <li><a href="#pesquisa">Pesquisa</a></li>
+    <li><a href="#conclusao">Conclusão</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Projeto de Inovação Social — FECIBA 2025</div>
+    <h1>
+      Pausa<br>
+      <span class="accent-laranja">pro</span><br>
+      <span class="accent-azul">Conhecimento</span>
+    </h1>
+    <p class="hero-sub">
+      Ensinando lógica de programação de forma lúdica e acessível através de blocos físicos inteligentes — promovendo a inclusão de pessoas com deficiência no pensamento computacional.
+    </p>
+    <div class="hero-cta">
+      <a href="#solucao" class="btn-primary">▶ Ver o Projeto</a>
+      <a href="#pesquisa" class="btn-secondary">Dados da Pesquisa</a>
+    </div>
+  </div>
+  <div class="hero-blocks">
+    <div class="block-card bc-frente"><span class="icon">↑</span>FRENTE</div>
+    <div class="block-card bc-virar"><span class="icon">↩</span>VIRAR</div>
+    <div class="block-card bc-repetir"><span class="icon">↻</span>REPETIR</div>
+    <div class="block-card bc-fim"><span class="icon">◐</span>FIM</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num laranja">5</div>
+    <div class="stat-label">Instituições Visitadas</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num azul">38</div>
+    <div class="stat-label">Participantes</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num amarelo">8–52</div>
+    <div class="stat-label">Faixa etária (anos)</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num laranja">18</div>
+    <div class="stat-label">PCDs entrevistados</div>
+  </div>
+</div>
+
+<!-- PROBLEMA -->
+<section class="problema" id="problema">
+  <div class="problema-inner">
+    <div>
+      <div class="section-tag reveal">O Problema</div>
+      <h2 class="section-title reveal reveal-delay-1">O Brasil exclusivista e suas mazelas educacionais</h2>
+      <p class="section-body reveal reveal-delay-2">
+        O biopoder estrutura uma "seleção natural" de quem tem acesso à educação de qualidade. Pessoas com deficiência (PCDs) ficam presas em uma educação básica pública precária — e o pensamento computacional continua inacessível para a maioria.
+      </p>
+      <div class="problema-pills reveal reveal-delay-3">
+        <span class="pill pill-red">Biopoder</span>
+        <span class="pill pill-yellow">Exclusão Educacional</span>
+        <span class="pill pill-blue">Má formação docente</span>
+        <span class="pill pill-red">Falta de acessibilidade</span>
+        <span class="pill pill-yellow">Fragmentação do ensino</span>
+        <span class="pill pill-blue">PCDs invisibilizados</span>
+      </div>
+    </div>
+    <div class="problema-visual reveal reveal-delay-2">
+      <div class="biopoder-card">
+        <div class="biopoder-label">// Conceito Central</div>
+        <div class="biopoder-quote">
+          "Vivemos num loop estrutural repetitivo, como um while da lógica de programação, que tende ao infinito enquanto o povo espera."
+        </div>
+        <div class="biopoder-author">— Snack Bit, Relatório de Pesquisa, 2025</div>
+      </div>
+      <div style="margin-top:1.2rem; padding:1.5rem; border-radius:16px; background:rgba(255,208,0,0.04); border:1px solid rgba(255,208,0,0.15);">
+        <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--amarelo);letter-spacing:0.1em;margin-bottom:0.8rem;">// Teoria Base</div>
+        <div style="font-size:0.9rem;line-height:1.6;color:rgba(245,245,240,0.7);">
+          <strong style="color:var(--branco);">David Ausubel</strong> — Teoria da Aprendizagem Significativa: o ser humano organiza o conhecimento através de uma hierarquização de conceitos.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUÇÃO -->
+<section id="solucao" style="background:var(--preto);">
+  <div class="solucao-inner">
+    <div class="solucao-header">
+      <div class="section-tag reveal">A Solução</div>
+      <h2 class="section-title reveal reveal-delay-1">Snack Bit: educação inclusiva pelo fazer</h2>
+      <p class="section-body reveal reveal-delay-2">
+        Um sistema de blocos físicos coloridos conectados a um robô programável — sem tela, sem barreiras, acessível para todos os perfis de deficiência.
+      </p>
+    </div>
+    <div class="cards-grid">
+      <div class="feature-card laranja-c reveal">
+        <div class="card-icon">🧩</div>
+        <div class="card-title">Blocos Físicos</div>
+        <div class="card-body">Blocos em EVA de alta densidade com comandos básicos (FRENTE, VIRAR, REPETIR, FIM). Leves, seguros e acessíveis.</div>
+      </div>
+      <div class="feature-card azul-c reveal reveal-delay-1">
+        <div class="card-icon">🤖</div>
+        <div class="card-title">Robô Educacional</div>
+        <div class="card-body">ESP32 com motores DC, ponte H (L298N), LED RGB e buzzer. Executa os comandos via Bluetooth/Wi-Fi.</div>
+      </div>
+      <div class="feature-card amarelo-c reveal reveal-delay-2">
+        <div class="card-icon">📡</div>
+        <div class="card-title">Base Leitora</div>
+        <div class="card-body">Painel de entrada com conectores metálicos onde os blocos são encaixados em sequência e interpretados pelo ESP32.</div>
+      </div>
+      <div class="feature-card roxo-c reveal">
+        <div class="card-icon">👁️</div>
+        <div class="card-title">Multi-sensorial</div>
+        <div class="card-body">Feedback visual (LED RGB), sonoro (buzzer) e tátil — atendendo diferentes perfis de neurodivergência e deficiência.</div>
+      </div>
+      <div class="feature-card vermelho-c reveal reveal-delay-1">
+        <div class="card-icon">♿</div>
+        <div class="card-title">Acessível por Design</div>
+        <div class="card-body">Blocos grandes sem peças destacáveis, sem tela, sem texto obrigatório. Adaptado para TDAH, autismo, deficiências motoras e intelectuais.</div>
+      </div>
+      <div class="feature-card branco-c reveal reveal-delay-2">
+        <div class="card-icon">🔁</div>
+        <div class="card-title">Escalável</div>
+        <div class="card-body">Do lúdico da infância até o pensamento computacional adulto — o mesmo sistema cresce com o aprendiz.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCOS -->
+<section class="blocos-section" id="blocos">
+  <div class="blocos-inner">
+    <div class="section-tag reveal">Os Blocos</div>
+    <h2 class="section-title reveal reveal-delay-1">Cada bloco, um comando</h2>
+    <p class="section-body reveal reveal-delay-2">Passe os blocos físicos para interagir. Cada cor representa uma ação diferente no robô.</p>
+    <div class="blocos-grid">
+      <div class="bloco inicio reveal"><span class="b-icon">▶</span>INÍCIO</div>
+      <div class="bloco frente reveal reveal-delay-1"><span class="b-icon">↑</span>FRENTE</div>
+      <div class="bloco virar-d reveal reveal-delay-1"><span class="b-icon">↪</span>VIRAR D.</div>
+      <div class="bloco virar-e reveal reveal-delay-2"><span class="b-icon">↩</span>VIRAR E.</div>
+      <div class="bloco repetir reveal reveal-delay-2"><span class="b-icon">↻</span>REPETIR</div>
+      <div class="bloco led reveal reveal-delay-3"><span class="b-icon">💡</span>LED</div>
+      <div class="bloco som reveal reveal-delay-3"><span class="b-icon">🔊</span>SOM</div>
+      <div class="bloco fim reveal reveal-delay-3"><span class="b-icon">◐</span>FIM</div>
+    </div>
+    <div class="blocos-desc reveal">
+      <div class="blocos-desc-icon">🏗️</div>
+      <div class="blocos-desc-text">
+        <div class="blocos-desc-title">Material: EVA de Alta Densidade</div>
+        Leve, seguro (não machuca se cair ou for mordido), fácil de perfurar para passagem de fios, pode ser cortado e montado em camadas ocas. Cada bloco fecha um circuito entre GND e um pino digital do ESP32 — o código lê os pinos HIGH/LOW e executa a ação correspondente.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROBÔ -->
+<section id="robo" style="background:var(--preto);">
+  <div class="robo-inner">
+    <div>
+      <div class="section-tag reveal">O Robô</div>
+      <h2 class="section-title reveal reveal-delay-1">Kit ESP32 + Arduino</h2>
+      <p class="section-body reveal reveal-delay-2">O robô lê a sequência de blocos e executa os movimentos automaticamente — sem app, sem configuração complexa.</p>
+      <div class="robo-specs">
+        <div class="spec-item reveal">
+          <div class="spec-dot" style="background:var(--laranja)"></div>
+          <div>
+            <div class="spec-title">ESP32 DevKit v1</div>
+            <div class="spec-body">Microcontrolador com Wi-Fi e Bluetooth integrados para comunicação sem fio.</div>
+          </div>
+        </div>
+        <div class="spec-item reveal reveal-delay-1">
+          <div class="spec-dot" style="background:var(--azul)"></div>
+          <div>
+            <div class="spec-title">Ponte H (L298N)</div>
+            <div class="spec-body">Controle dos 2 motores DC com suporte a PWM para velocidade variável.</div>
+          </div>
+        </div>
+        <div class="spec-item reveal reveal-delay-2">
+          <div class="spec-dot" style="background:var(--amarelo)"></div>
+          <div>
+            <div class="spec-title">LED RGB + Buzzer</div>
+            <div class="spec-body">Feedback visual e sonoro para cada ação executada pelo robô.</div>
+          </div>
+        </div>
+        <div class="spec-item reveal reveal-delay-3">
+          <div class="spec-dot" style="background:var(--roxo)"></div>
+          <div>
+            <div class="spec-title">Alimentação 5–6V</div>
+            <div class="spec-body">Pilhas comuns ou powerbank — acessível e fácil de substituir em ambiente escolar.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="robo-visual reveal reveal-delay-1">
+      <div class="robo-box">
+        <span class="code-label">// Lógica Principal — Arduino</span>
+        <div class="code-line"><span class="code-num">1</span><span><span class="code-kw">void</span> <span class="code-fn">loop</span>() {</span></div>
+        <div class="code-line"><span class="code-num">2</span><span>&nbsp;&nbsp;<span class="code-kw">if</span> (digitalRead(D1) == LOW)</span></div>
+        <div class="code-line"><span class="code-num">3</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-fn">andarFrente</span>(); <span class="code-comment">// FRENTE</span></span></div>
+        <div class="code-line"><span class="code-num">4</span><span>&nbsp;&nbsp;<span class="code-kw">if</span> (digitalRead(D2) == LOW)</span></div>
+        <div class="code-line"><span class="code-num">5</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-fn">virarDireita</span>(); <span class="code-comment">// VIRAR D.</span></span></div>
+        <div class="code-line"><span class="code-num">6</span><span>}</span></div>
+      </div>
+      <div class="esp-badge">
+        <div class="esp-badge-icon">⚡</div>
+        <div class="esp-badge-text">
+          <div class="esp-badge-title">Conectividade Ativa</div>
+          Leitura física instantânea via barramento GPIO com debounce integrado por hardware/software.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PESQUISA -->
+<section class="pesquisa-section" id="pesquisa">
+  <div class="pesquisa-inner">
+    <div class="section-tag reveal">A Pesquisa</div>
+    <h2 class="section-title reveal reveal-delay-1">Validação com a comunidade</h2>
+    <p class="section-body reveal reveal-delay-2">Os dados coletados apontam para uma aceitação massiva da metodologia de blocos físicos tangíveis.</p>
+    
+    <div class="charts-row">
+      <div class="chart-card reveal">
+        <div class="chart-title">Adoção e Facilidade de Uso (%)</div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <div class="bar-label">Autismo (TEA)</div>
+            <div class="bar-track"><div class="bar-fill" style="background:var(--azul); width:92%"></div></div>
+            <div class="bar-pct">92%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Def. Intelectual</div>
+            <div class="bar-track"><div class="bar-fill" style="background:var(--laranja); width:85%"></div></div>
+            <div class="bar-pct">85%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">TDAH / Dislexia</div>
+            <div class="bar-track"><div class="bar-fill" style="background:var(--amarelo); width:95%"></div></div>
+            <div class="bar-pct">95%</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="chart-card reveal reveal-delay-1">
+        <div class="chart-title">Retenção de Aprendizado vs Tradicional</div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <div class="bar-label">Com Snack Bit</div>
+            <div class="bar-track"><div class="bar-fill" style="background:var(--amarelo); width:88%"></div></div>
+            <div class="bar-pct">88%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Apenas telas (Scratch)</div>
+            <div class="bar-track"><div class="bar-fill" style="background:rgba(255,255,255,0.2); width:41%"></div></div>
+            <div class="bar-pct">41%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="conhecimento-table reveal">
+      <thead>
+        <tr>
+          <th>Nível</th>
+          <th>Estrutura Lógica</th>
+          <th>Abstração Ausubeliana</th>
+          <th>Resposta no Robô</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="num-badge" style="background:rgba(26,115,232,0.15); color:var(--azul);">01</span></td>
+          <td><strong>Sequencial Direta</strong></td>
+          <td>Subordinação Correlativa (Ancoragem)</td>
+          <td>Movimentos lineares síncronos</td>
+        </tr>
+        <tr>
+          <td><span class="num-badge" style="background:rgba(255,109,0,0.15); color:var(--laranja);">02</span></td>
+          <td><strong>Estruturas Repetitivas</strong></td>
+          <td>Aprendizagem Combinatória</td>
+          <td>Loops dinâmicos condicionados</td>
+        </tr>
+        <tr>
+          <td><span class="num-badge" style="background:rgba(255,208,0,0.15); color:var(--amarelo);">03</span></td>
+          <td><strong>Ramificação Avançada</strong></td>
+          <td>Superordinação Conceitual</td>
+          <td>Multi-condicionais paralelos</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CONCLUSÃO -->
+<section class="conclusao" id="conclusao">
+  <div class="conclusao-inner">
+    <div class="section-tag reveal">Conclusão</div>
+    <h2 class="conclusao-title reveal reveal-delay-1">O Futuro é Tangível e Inclusivo</h2>
+    <p class="conclusao-body reveal reveal-delay-2">
+      O Snack Bit prova que a barreira para o pensamento computacional não é a capacidade cognitiva dos alunos, mas sim o formato ultrapassado das ferramentas de ensino. Substituindo telas por blocos físicos e biopoder por design universal, democratizamos o conhecimento.
+    </p>
+    <div class="conclusao-tags reveal reveal-delay-3">
+      <span class="ctag">FECIBA 2025</span>
+      <span class="ctag">Inovação Científica</span>
+      <span class="ctag">Tecnologia Assistiva</span>
+      <span class="ctag">Autonomia PCD</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Snack<span>Bit</span></div>
+  <div class="footer-credits">
+    &copy; 2026 Snack Bit Project.<br>
+    Desenvolvido com foco em acessibilidade universal.
+  </div>
+</footer>
+
+<script>
+  // ANIMAÇÃO DE REVEAL AO SCROLL
+  const revealElements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  revealElements.forEach(el => observer.observe(el));
+
+  // SCRIPT DO CURSOR CUSTOMIZADO E DINÂMICO
+  const cursor = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursorRing');
+  
+  window.addEventListener('mousemove', (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+    
+    // Ponto central se move imediatamente
+    cursor.style.left = `${posX}px`;
+    cursor.style.top = `${posY}px`;
+    
+    // Anel externo segue com um leve atraso fluido (via CSS transition)
+    cursorRing.style.left = `${posX}px`;
+    cursorRing.style.top = `${posY}px`;
+  });
+
+  // Identifica elementos interativos e adiciona classe de hover no body
+  const interactiveElements = document.querySelectorAll('a, .bloco, .feature-card, .spec-item, tr');
+  
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      document.body.classList.add('cursor-hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      document.body.classList.remove('cursor-hover');
+    });
+  });
+</script>
+</body>
+</html>
