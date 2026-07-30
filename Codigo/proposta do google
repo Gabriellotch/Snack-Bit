@@ -1,0 +1,26 @@
+cpp#include <SPI.h>
+#include <MFRC522.h>
+
+#define RST_PIN_1 9
+#define SS_PIN_1  10
+
+#define RST_PIN_2 7
+#define SS_PIN_2  8
+
+MFRC522 mfrc522_1(SS_PIN_1, RST_PIN_1);
+MFRC522 mfrc522_2(SS_PIN_2, RST_PIN_2);
+
+void setup() {
+  Serial.begin(9600);
+  SPI.begin();
+  mfrc522_1.PCD_Init();
+  mfrc522_2.PCD_Init();
+}
+
+void loop() {
+  // Lógica para verificar o leitor 1
+  // ...
+  // Lógica para verificar o leitor 2
+  // ...
+}
+Use o código com cuidado.
