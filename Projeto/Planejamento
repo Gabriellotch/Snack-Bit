@@ -1,0 +1,247 @@
+Crie um aplicativo educacional para ajudar pessoas com deficiência (PCDs) a aprender lógica de programação de forma simples, visual, interativa e acessível.
+
+O aplicativo deve ter uma interface semelhante à imagem de referência fornecida, utilizando **blocos coloridos de comandos**, que podem ser arrastados e organizados em um fluxo de programação. O usuário não precisa escrever código.
+
+### Tela principal
+
+A tela principal deve ser dividida em:
+
+* Menu lateral com os comandos disponíveis.
+* Área central para montar o fluxo do programa.
+* Bloco inicial "INÍCIO".
+* Blocos conectados por setas, mostrando a ordem de execução.
+* Botão "Executar" para testar o programa.
+* Botão "Enviar ao Robô" para enviar o programa para um robô físico.
+* Botão "Apagar" para remover blocos.
+* Menu inferior com "Fluxo", "Salvar" e "Configurações".
+
+Os blocos devem ter o mesmo estilo visual da imagem de referência: formato de cartão com cantos arredondados, cores diferentes, ícones grandes, texto simples e setas indicando o fluxo.
+
+### Categorias de blocos
+
+O aplicativo deve possuir blocos para ensinar os principais conceitos de lógica de programação.
+
+**1. Comandos de movimento**
+
+* Frente
+* Virar para Esquerda
+* Virar para Direita
+* Parar
+* Fim
+
+Cada comando deve possuir um ícone representativo e uma cor própria.
+
+**2. Variáveis**
+
+Criar blocos para ensinar o conceito de variável de maneira visual e simples.
+
+Exemplos:
+
+* Criar variável
+* Definir variável
+* Aumentar variável
+* Diminuir variável
+* Mostrar variável
+
+Exemplo visual:
+
+"Definir [contador] = [5]"
+
+O usuário deve poder clicar nos campos e escolher ou alterar os valores.
+
+**3. Condicionais**
+
+Criar blocos para ensinar decisões na programação.
+
+Exemplos:
+
+* SE
+* SENÃO
+* SE condição for verdadeira
+* Verificar obstáculo
+* Verificar distância
+* Verificar variável
+
+Exemplo:
+
+"SE [obstáculo detectado] → Virar para Esquerda"
+
+O bloco condicional deve possuir uma estrutura visual que mostre claramente onde colocar os comandos que serão executados quando a condição for verdadeira.
+
+Também deve existir a possibilidade de utilizar:
+
+"SE [condição]
+ENTÃO [comandos]
+SENÃO [comandos]"
+
+**4. Repetição**
+
+Criar blocos para ensinar laços de repetição.
+
+Exemplos:
+
+* Repetir
+* Repetir 2 vezes
+* Repetir 5 vezes
+* Repetir até
+* Enquanto
+
+Exemplo:
+
+"REPETIR [5] VEZES → Frente"
+
+O usuário deve conseguir colocar outros blocos dentro do bloco de repetição.
+
+### Funcionamento do fluxo
+
+Os blocos devem funcionar como uma programação visual.
+
+O usuário pode arrastar os blocos para a área central e conectá-los por meio de setas.
+
+Exemplo:
+
+INÍCIO → Frente → Virar para Direita → Repetir 3 vezes → Frente → Fim
+
+Quando o usuário clicar em "Executar", o aplicativo deve mostrar um robô virtual executando os comandos.
+
+O robô deve se movimentar em um ambiente visual, permitindo que o aluno veja na prática o resultado da programação.
+
+### Variáveis, condições e repetição na prática
+
+Criar desafios progressivos.
+
+Exemplo de desafio de variável:
+
+"Faça o robô andar 5 passos utilizando uma variável chamada PASSOS."
+
+Exemplo de desafio condicional:
+
+"Faça o robô andar para frente. Se encontrar um obstáculo, vire para a direita."
+
+Exemplo de desafio de repetição:
+
+"Faça o robô andar 5 vezes utilizando apenas um bloco de repetição."
+
+Exemplo de desafio utilizando os três conceitos:
+
+"Crie uma variável chamada PASSOS com valor 0. Faça o robô andar enquanto PASSOS for menor que 5. A cada movimento, aumente PASSOS em 1. Se encontrar um obstáculo, vire para a direita."
+
+### Sistema de aprendizado
+
+O aplicativo deve possuir aulas divididas por níveis:
+
+**Nível 1 – Comandos básicos**
+
+* Frente
+* Esquerda
+* Direita
+* Fim
+
+**Nível 2 – Sequência lógica**
+
+* Ordem dos comandos
+* Organização do fluxo
+
+**Nível 3 – Variáveis**
+
+* Criar variáveis
+* Atribuir valores
+* Alterar valores
+
+**Nível 4 – Condicionais**
+
+* SE
+* SENÃO
+* Tomada de decisões
+
+**Nível 5 – Repetição**
+
+* Repetir X vezes
+* Enquanto
+* Repetir até
+
+**Nível 6 – Desafios avançados**
+
+* Utilizar variáveis, condicionais e repetições juntas.
+
+### Acessibilidade para PCDs
+
+O aplicativo deve ser desenvolvido pensando em acessibilidade.
+
+Adicionar:
+
+* Botões grandes.
+* Ícones grandes.
+* Textos ampliados.
+* Alto contraste.
+* Diferentes combinações de cores.
+* Áudio explicando cada comando.
+* Leitura dos textos por voz.
+* Feedback visual e sonoro.
+* Opção de aumentar o tamanho da interface.
+* Interface simples, com poucos elementos por tela.
+* Comandos representados por ícones e textos.
+* Mensagens de erro simples e fáceis de entender.
+
+Quando o aluno montar um programa incorreto, não mostrar apenas "Erro". Explicar de maneira simples, por exemplo:
+
+"Seu robô tentou virar, mas não existe um comando anterior para chegar até esse ponto."
+
+Ou:
+
+"Você precisa colocar um comando dentro do bloco REPETIR."
+
+### Gamificação
+
+Adicionar:
+
+* Pontuação.
+* Estrelas por desafio.
+* Medalhas.
+* Conquistas.
+* Níveis.
+* Barra de progresso.
+* Desafios desbloqueáveis.
+* Registro dos exercícios concluídos.
+
+### Robô virtual
+
+Criar um robô virtual na tela de execução.
+
+O ambiente deve possuir:
+
+* Caminhos.
+* Obstáculos.
+* Objetivos.
+* Paredes.
+* Pontos de chegada.
+* Objetos que o robô precisa alcançar.
+
+O aluno deve aprender programação resolvendo problemas com o robô.
+
+### Conexão com robô físico
+
+Adicionar uma opção "Enviar ao Robô".
+
+O aplicativo deve permitir futuramente conectar-se a um robô físico por Bluetooth ou Wi-Fi e enviar a sequência de comandos criada pelo aluno.
+
+O mesmo programa criado visualmente no aplicativo deve poder ser interpretado pelo robô físico.
+
+### Estilo visual
+
+Manter o estilo da imagem de referência:
+
+* Design moderno e limpo.
+* Fundo claro.
+* Blocos com cantos arredondados.
+* Sombras suaves.
+* Ícones grandes.
+* Cores diferentes para cada categoria.
+* Setas mostrando o fluxo.
+* Interface simples e organizada.
+* Pouca quantidade de informação por tela.
+* Visual amigável e adequado para estudantes.
+
+O aplicativo deve transmitir a ideia de que o aluno está **montando um programa como se estivesse montando um quebra-cabeça**, aprendendo lógica de programação através da prática.
+
+O objetivo principal é ensinar **sequência, variáveis, condicionais e repetição** de maneira visual, acessível e divertida, permitindo que o aluno aprenda programação sem precisar escrever código inicialmente.
