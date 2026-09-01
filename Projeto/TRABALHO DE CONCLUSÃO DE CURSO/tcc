@@ -1,0 +1,437 @@
+
+
+ 
+CENTRO ESTADUAL DE EDUCAÇÃO PROFISSIONAL ÁUREO DE OLIVEIRA FILHO – CEEP
+
+
+
+
+
+
+
+
+
+DANILO GABRIEL EVANGELISTA MASCARENHAS
+GABRIEL VIEIRA ALVES
+
+
+
+
+
+SNACK BIT:
+ROBÔ PARA ENSINAR LÓGICA DE PROGRAMAÇÃO
+
+
+
+
+
+
+
+
+
+
+
+
+
+Feira de Santana – BA
+2025
+
+ 
+
+                
+   
+DANILO GABRIEL EVANGELISTA MASCARENHAS
+GABRIEL VIEIRA ALVES
+
+
+
+
+
+
+
+
+SNACK BIT:
+ROBÔ PARA ENSINAR LÓGICA DE PROGRAMAÇÃO
+
+
+
+Pré-projeto de pesquisa apresentado ao Centro Estadual de Educação Profissional Áureo de Oliveira Filho (CEEP), como requisito para aprovação na disciplina Prática Profissional Orientada e Supervisionada (PPOS).
+
+Orientador: Prof. Ivanildo Gomes
+Coorientador: Prof. Carlos Alexandre
+
+
+
+
+
+
+
+
+
+
+Feira de Santana – BA
+2025
+
+Sumário
+1 INTRODUÇÃO	2
+2 FUNDAMENTAÇÃO TEÓRICA	2
+2.1 Perspectivas Biopolíticas e a Construção Social da Deficiência	2
+2.2 Processos de Aprendizagem, Mediação Pedagógica e Programação Visual	5
+Perspectiva de formação por etapas: da ação externa ao pensamento abstrato	5
+Articulação com a Aprendizagem Significativa	6
+Feedback como elemento de mediação pedagógica	6
+Funções: Regulação, Autonomia e Relações Interpessoais	7
+Contribuições para a Aprendizagem	8
+Tecnologia, acessibilidade e inclusão	8
+Programação visual, Pensamento Computacional e currículo	9
+Por que utilizar programação visual por blocos?	9
+Estruturas fundamentais da lógica de programação	10
+3.3 Interface Humano-Computador, Usabilidade, Avaliação Heurística, Experiência do Usuário e Acessibilidade Digital	12
+3 OBJETIVOS	14
+3.1 Objetivo Geral	14
+3.2 Objetivos Específicos	15
+4 METODOLOGIA	15
+4.1 Locais da Pesquisa e Contexto da Aplicação	17
+5 RESULTADOS	19
+5.1 Caracterização dos participantes	19
+5.2 Dificuldades e necessidades relacionadas à aprendizagem	20
+5.3 Conhecimentos prévios sobre lógica de programação	21
+5.4 Interesse em aprender programação	21
+5.5 Síntese dos resultados e relação com o desenvolvimento do Snack Bit	22
+6. CONCLUSÕES	23
+RESUMO	24
+ABSTRACT	24
+REFERÊNCIAS	25
+ANEXOS	27
+A Questionário de Diagnóstico de Campo	28
+B Interface	28
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+1 INTRODUÇÃO
+A educação é um direito fundamental, mas pessoas com deficiência (PCD) ainda encontram barreiras para acessar recursos pedagógicos. Dados da Pesquisa Nacional por Amostra de Domicílios PNAD Contínua em 2022 revelam grandes desigualdades educacionais: 63,3% das PCD com 25 anos ou mais não têm instrução ou ensino fundamental incompleto, ante 29,9% da população sem deficiência. Apesar das leis como a Lei Brasileira de Inclusão a  LBI (nº 13.146/2015) e LDB (nº 9.394/1996), a garantia legal por si só não elimina as barreiras reais.
+Este trabalho apresenta o Snack Bit: Pausa para Lógica de Programação, uma aplicação web que ensina lógica de programação de forma lúdica, visual e acessível, usando blocos visuais e um personagem virtual. A ferramenta se alinha à aprendizagem significativa, à formação gradual de conceitos, ao construcionismo e aos princípios de Tecnologia Assistiva. Seu projeto segue ainda os referenciais de User Experience (Experiência do Usuário e usabilidade UX) (NORMAN; NIELSEN) e as diretrizes de acessibilidade da Lei nº 10.098/2000, com navegação por teclado, compatibilidade com leitores de tela, alto contraste e feedback visual e sonoro.
+A pesquisa é de natureza aplicada, abordagem mista e caráter exploratório-descritivo, combinando revisão bibliográfica, observação de campo, desenvolvimento técnico e aplicação de instrumentos de avaliação para verificar a usabilidade, acessibilidade e eficácia pedagógica da proposta.
+2 FUNDAMENTAÇÃO TEÓRICA
+2.1 Perspectivas Biopolíticas e a Construção Social da Deficiência
+Foucault (2008) analisa o biopoder como um conjunto de mecanismos que regulam corpos e população, definindo condutas e normalizando a vida social. O poder não se manifesta apenas de forma repressiva: ele se expressa por meio de normas e discursos que classificam os indivíduos, produzindo processos de inclusão e também de exclusão, conforme se encaixam ou não no que é considerado “normal”.
+Essa perspectiva permite compreender a deficiência não apenas como uma condição individual ou biológica, mas como resultado de barreiras sociais — definidas pela Lei Brasileira de Inclusão (LBI) como:
+“Qualquer entrave, obstáculo, atitude ou comportamento que limite ou impeça a participação social da pessoa, bem como o gozo, a fruição e o exercício de seus direitos à acessibilidade, à liberdade de movimento e de expressão, à comunicação, ao acesso à informação, à compreensão, à circulação com segurança, entre outros (BRASIL, 2015, Art. 3º, Inciso IV).”
+Ou seja: ao se adotar um único modelo como padrão de referência, todos aqueles que dele se afastam encontram obstáculos. A limitação reside, sobretudo, nas estruturas que não foram projetadas para acolher a diversidade. No Brasil, essa realidade é confirmada por dados da PNAD Contínua 2022 (IBGE, 2023), que registram aproximadamente 18,6 milhões de pessoas com deficiência correspondendo a 8,9% da população com 2 anos ou mais de idade. Entre as pessoas com 25 anos ou mais, 63,3% não possuíam instrução ou tinham o ensino fundamental incompleto; enquanto, entre aquelas sem deficiência, esse percentual atingia apenas 29,9%  o que comprova que as barreiras sociais e educacionais se traduzem em desigualdades concretas de acesso e permanência.
+Essa compreensão converge perfeitamente com a visão adotada pela Lei nº 13.146, de 2015 Lei Brasileira de Inclusão (LBI), que estrutura a noção de deficiência a partir da interação entre a pessoa e as barreiras presentes no ambiente. Conforme estabelecido em seu Art. 2º:
+  	“Considera-se pessoa com deficiência aquela que tem impedimento de longo prazo de natureza física, mental, intelectual ou sensorial, o qual, em interação com uma ou mais barreiras, pode obstruir sua participação plena e efetiva na sociedade em igualdade de condições com as demais pessoas (BRASIL, 2015, art. 2º).”
+A legislação, portanto, desloca o foco da limitação: não mais do indivíduo, mas da necessidade de transformação do ambiente. A deficiência não está restrita ao corpo da pessoa, mas na ausência de condições estruturais que garantam sua participação em igualdade. Essa visão dialoga diretamente com a crítica foucaultiana sobre normalidade: ao invés de exigir que o indivíduo se ajuste ao modelo dominante, é esse modelo, assim como as estruturas, que deve ser transformado para receber a diversidade.
+Como visto, a própria LBI, em seu Art. 3º, conceitua barreiras como qualquer entrave ou obstáculo que limite ou impeça a participação social e o exercício pleno de direitos abrangendo aspectos físicos, comunicacionais, informativos, atitudinais e estruturais (BRASIL, 2015). Nesse sentido, a existência ou a eliminação de barreiras resulta de escolhas: projetos, práticas e organizações que mantêm entraves ou, ao contrário, os suprimem em prol da inclusão.
+No campo educacional, essa compreensão torna-se fundamental e urgente. Conforme defendem Macedo et al. (2014), a educação inclusiva parte do princípio de reconhecimento da diversidade humana e da garantia de condições efetivas de acesso e permanência. Mais do que apenas matricular o estudante, trata-se de criar condições reais para que ele possa participar, interagir, aprender e desenvolver-se. A escola, nesse sentido, é chamada a rever seus padrões, métodos e práticas, abandonando a lógica adaptativa  segundo a qual o aluno deve se ajustar à instituição para assumir a responsabilidade de adaptar-se, ela mesma, às necessidades de cada sujeito.
+Essa diretriz encontra reforço legal no Art. 27 da LBI, que assegura:
+	‘A educação constitui direito da pessoa com deficiência, assegurados sistema educacional inclusivo em todos os níveis e aprendizado ao longo de toda a vida, de forma a alcançar o máximo desenvolvimento possível de seus talentos e habilidades físicas, sensoriais, intelectuais e sociais, segundo suas características, interesses e necessidades de aprendizagem (BRASIL, 2015, art. 27).”
+A norma deixa claro que a presença física na instituição não basta: é preciso oferecer ambiente, recursos e práticas pedagógicas que tornem possível a aprendizagem e a interação. Eliminar barreiras educacionais é, portanto, o próprio fundamento da proposta inclusiva.
+A perspectiva é ampliada com o Decreto nº 12.686, de 20 de outubro de 2025, que institui a Política Nacional de Educação Especial Inclusiva e reafirma o compromisso e a responsabilidade do poder público em estruturar e promover condições favoráveis à participação, à aprendizagem e ao desenvolvimento pleno dos estudantes da educação especial.
+Diante desse quadro, a tecnologia educacional assume um papel estratégico e transformador. Recursos digitais, quando planejados desde sua concepção com critérios rigorosos de acessibilidade, funcionam como meios capazes de reduzir barreiras de comunicação, representação e interação, ampliando as possibilidades de compreensão e atuação para todos os perfis de estudantes. Longe de ser apenas um instrumento auxiliar ou metodológico, a tecnologia, inserida nessa lógica, configura-se como uma ferramenta central de mediação pedagógica e de construção de igualdade de condições.
+Assim, a discussão sobre biopoder, crítica à normalização e construção social da deficiência leva a uma conclusão essencial: a inclusão não exige que a pessoa se ajuste à sociedade, mas que a sociedade transforme suas estruturas e práticas para acolher a diversidade. Na educação, isso significa projetar ambientes, recursos e tecnologias considerando as diferenças desde a origem, unindo inclusão, acessibilidade e mediação pedagógica como princípios indissociáveis..
+2.2 Processos de Aprendizagem, Mediação Pedagógica e Programação Visual
+Compreender a aprendizagem em contextos inclusivos exige considerar, para além dos conteúdos, como o estudante constrói, organiza e mobiliza os conhecimentos. Trata-se de um processo mediado por recursos, representações e interações, capaz de favorecer avanços graduais na compreensão e na apropriação do objeto de estudo.
+Perspectiva de formação por etapas: da ação externa ao pensamento abstrato
+Conforme Galperin (2009), a aprendizagem constitui um processo gradual de formação de ações mentais, que se desenvolve a partir de formas externas e concretas até alcançar níveis progressivamente mais internalizados e abstratos de pensamento. Nesse sentido, recursos visuais, tais como blocos de programação e respostas observáveis na interface, podem atuar como suporte à aprendizagem, favorecendo a transição entre a manipulação de elementos concretos e a construção de formas mais abstratas de compreensão.
+Articulação com a Aprendizagem Significativa
+Essa perspectiva dialoga com a Teoria da Aprendizagem Significativa de Ausubel, segundo a qual a aprendizagem se torna mais efetiva quando novos conhecimentos são relacionados de maneira significativa aos conhecimentos prévios do estudante. Conforme destacam Sousa et al. (2025), essa relação possibilita atribuir sentido aos novos conteúdos a partir de conhecimentos já construídos. Nesse contexto, ambientes educacionais que utilizam representações visuais podem tornar mais perceptíveis as relações entre as ações realizadas pelo estudante e os resultados produzidos pela interface.
+No ensino da lógica de programação, essa relação pode ser observada quando o estudante associa determinado comando ao seu efeito visual. Ao acionar um comando de movimento, por exemplo, o estudante observa a alteração produzida na interface e, a partir dessa experiência, estabelece uma relação entre a instrução utilizada e a consequência obtida. De forma semelhante, conceitos como sequência, condição e repetição podem ser trabalhados por meio de atividades que favoreçam ciclos de experimentação, observação, análise e ajuste das estratégias utilizadas.
+Feedback como elemento de mediação pedagógica
+O feedback ou retorno/devolutiva é compreendido como uma ferramenta informativa e preventiva, que possibilita ao aluno compreender as consequências de suas ações, identificar avanços e dificuldades, readequar estratégias e verificar a congruência entre seus resultados e o que se espera alcançar. Mais do que uma simples resposta ou correção, assume caráter de mediação pedagógica, ao favorecer processos de reflexão, experimentação, correção e reconstrução do conhecimento.
+"O Feedback possui uma natureza preventiva, a fim de auxiliar não somente o professor, no processo de ensino, mas também o aluno no processo de aprendizagem, vez que ambos caminham em comum." (Paiva et al., 2021, p. 90)
+Conforme a literatura de referência, Hattie e Timperley (2007) conceituam feedback como a informação fornecida sobre o desempenho ou a compreensão do aprendiz, com o propósito de reduzir a distância entre o desempenho atual e o desempenho desejado ou seja, indicar "onde o aluno está, aonde precisa chegar e quais caminhos seguir" para avançar.
+Qualidades Essenciais do Feedback Efetivo
+Para cumprir sua função pedagógica, o feedback deve ser:
+●	Contínuo e sistemático: integrado ao processo, não restrito ao final;
+●	Assertivo, respeitoso e descritivo: sem julgamento pessoal, focado em ações e estratégias;
+●	Oportuno e específico: fornecido no momento adequado e direcionado a pontos concretos;
+●	Planejado e estruturado: não é uma mensagem casual, mas orientação que o aluno realmente percebe e compreende;
+●	Dialógico e participativo: o aluno assume postura ativa, discutindo, ajustando e reestruturando suas ideias, e não apenas recebendo informação.
+
+"O feedback precisa ser planejado e estruturado, para que se integre aos processos de aprendizagens dos alunos. É necessário que os fatores que precisam ser comunicados sejam realmente percebidos por eles, para que possam tornar-se autônomos." (Paiva et al., 2021, p. 91)
+
+Funções: Regulação, Autonomia e Relações Interpessoais
+O feedback não se reduz a classificar o que está certo ou errado. Ele atua em três dimensões centrais:
+•	Regulação do ensino e da aprendizagem — permite ao professor identificar lacunas e readequar metodologias; ao aluno, reconhecer seu percurso e ajustar estratégias;
+•	Desenvolvimento da autonomia e autorregulação — ao compreender seus avanços e desafios, o aluno deixa de depender apenas de orientações externas e passa a refletir e agir com independência;
+•	Fortalecimento das relações interpessoais — fundamentado em diálogo e respeito, constrói confiança e valoriza o aluno, focando não no erro em si, mas no caminho a seguir.
+"O feedback ajudará na construção da autoestima do aluno, pois não está centrado no erro, mas sim, no caminho que o aluno deve seguir para alcançar bons resultados." (Paiva et al., 2021, p. 91)
+
+ Contribuições para a Aprendizagem
+A possibilidade de testar estratégias, observar resultados e realizar novas tentativas, mediada pelo feedback, transforma a aprendizagem em atividade de investigação e resolução de problemas. Nesse sentido, a devolutiva:
+
+Tecnologia, acessibilidade e inclusão
+Associada a esse processo, a tecnologia pode constituir um instrumento de mediação pedagógica quando planejada e articulada a finalidades educacionais claras. Bersch (2006) compreende a Tecnologia Assistiva (TA) como um campo voltado à promoção da autonomia, da independência, da qualidade de vida e da inclusão das pessoas com deficiência. No contexto educacional, recursos tecnológicos podem contribuir para a redução de barreiras relacionadas à comunicação, à interação e ao acesso aos conteúdos, desde que sejam selecionados de acordo com as necessidades dos estudantes e empregados com intencionalidade pedagógica.
+A simples presença de recursos tecnológicos, entretanto, não garante a inclusão. Para que uma tecnologia contribua efetivamente para a aprendizagem, é necessário considerar aspectos relacionados à acessibilidade, à usabilidade, às características dos usuários e às estratégias pedagógicas adotadas. Dessa forma, a tecnologia deixa de ser apenas um meio de apresentação de conteúdos e passa a exercer função de mediação, ampliando as possibilidades de interação do estudante com o conhecimento.
+Programação visual, Pensamento Computacional e currículo
+No desenvolvimento de sistemas educacionais digitais, essa perspectiva de mediação torna-se especialmente relevante para o ensino do Pensamento Computacional (PC), compreendido como uma abordagem voltada à resolução de problemas por meio de estratégias que envolvem decomposição, reconhecimento de padrões, abstração e construção de algoritmos. No contexto educacional, o Pensamento Computacional não se restringe ao uso de equipamentos ou linguagens específicas, mas envolve o desenvolvimento de formas estruturadas de raciocínio para analisar problemas, elaborar estratégias e construir soluções.
+No cenário educacional brasileiro, o Complemento à Base Nacional Comum Curricular (BNCC) para Computação apresenta habilidades relacionadas ao desenvolvimento do pensamento computacional e à construção de algoritmos. Entre elas, destaca-se a habilidade EF07CO05, relacionada à criação de algoritmos utilizando decomposição e reúso na resolução colaborativa de problemas, com automação por meio de linguagem de programação. Essa perspectiva evidencia que o ensino da programação não deve se limitar à apresentação de comandos isolados, mas favorecer processos de construção, teste, ajuste e compartilhamento de soluções.
+Por que utilizar programação visual por blocos?
+A introdução à programação por meio de linguagens textuais pode apresentar dificuldades aos estudantes iniciantes, relacionadas ao elevado grau de abstração, à necessidade de conhecimentos prévios, à rigidez sintática e à ausência de acompanhamento individualizado (Santos; Costa, 2006). Esses desafios podem ser ampliados quando o estudante precisa compreender simultaneamente os princípios da lógica de programação e as regras formais da linguagem utilizada.
+Diante desse cenário, a programação visual por blocos apresenta-se como uma alternativa de mediação pedagógica para a introdução aos conceitos de programação. Esses ambientes possibilitam a construção de algoritmos por meio da organização e conexão de elementos visuais, reduzindo a barreira inicial relacionada à sintaxe das linguagens textuais e permitindo maior concentração na estrutura lógica e na relação entre os comandos e seus efeitos. Dessa forma, a programação visual não deve ser compreendida apenas como uma simplificação da programação tradicional, mas como uma forma de representação que pode favorecer a formulação de hipóteses, a realização de testes, a identificação de inconsistências e a reestruturação das estratégias utilizadas.
+Essa abordagem dialoga com o Construcionismo de Seymour Papert, segundo o qual a aprendizagem é favorecida quando o estudante participa ativamente da criação, manipulação e aperfeiçoamento de objetos ou artefatos que apresentem significado para seu processo de aprendizagem. Na programação visual por blocos, essa perspectiva pode ser relacionada ao ciclo planejar → montar → executar → observar → ajustar, no qual o erro pode ser compreendido como parte do processo investigativo e como oportunidade de revisão e aprimoramento da solução desenvolvida.
+Estruturas fundamentais da lógica de programação
+As três estruturas fundamentais da lógica de programação sequencial, condicional e de repetição podem ser representadas e trabalhadas em ambientes de programação visual por blocos. Sua utilização permite organizar diferentes formas de execução de comandos e, simultaneamente, desenvolver habilidades relacionadas ao Pensamento Computacional, como sequenciação, tomada de decisão, reconhecimento de padrões e elaboração de estratégias para resolução de problemas. O Quadro 1 apresenta essas estruturas, suas características e sua relação com o Pensamento Computacional.
+
+Quadro 1  Estruturas fundamentais da lógica de programação e sua relação com o Pensamento Computacional
+
+Conceito	Descrição	Relação com o Pensamento Computacional
+Estrutura Sequencial	Execução ordenada de comandos, na qual cada passo segue rigorosamente a ordem estabelecida.	Favorece organização lógica, sequenciação e compreensão de relações de causa e efeito.
+Estrutura Condicional	Permite que o algoritmo selecione caminhos distintos conforme a verificação de uma condição.	Desenvolve análise de cenários, tomada de decisão e estruturação lógica de alternativas.
+Estrutura de Repetição	Permite executar um conjunto de instruções várias vezes, com critério definido previamente.	Promove identificação de padrões, reúso de procedimentos e eficiência na resolução.
+
+
+
+Fonte: Elaborado pelo autor (2026).
+A representação dessas estruturas por meio de elementos visuais possibilita aproximar conceitos abstratos de ações observáveis e manipuláveis. Ao organizar, executar e modificar os blocos, o estudante pode observar os efeitos produzidos por suas escolhas e estabelecer relações entre as instruções utilizadas e os resultados obtidos. Esse processo favorece a experimentação, a identificação de inconsistências e a reformulação das estratégias empregadas na resolução de problemas.
+	Dessa forma, a programação visual por blocos pode constituir um recurso pedagógico coerente com os princípios de mediação da aprendizagem, aprendizagem significativa, acessibilidade e inclusão discutidos nesta seção. Quando associada a recursos de feedback, elementos de acessibilidade e atividades progressivas, essa abordagem amplia as possibilidades de interação do estudante com os conceitos de lógica de programação e Pensamento Computacional, constituindo a base conceitual para a proposta desenvolvida neste trabalho.
+3.3 Interface Humano-Computador, Usabilidade, Avaliação Heurística, Experiência do Usuário e Acessibilidade Digital
+A área de Interface Humano-Computador (IHC) é interdisciplinar, reunindo Ciência da Computação, Design e Ciências Cognitivas com o propósito de estudar, projetar e avaliar a interação entre pessoas e sistemas. Seu objetivo é desenvolver ambientes eficientes, claros, acessíveis e alinhados às necessidades, limitações e expectativas de quem os utiliza. Essa preocupação é especialmente relevante no desenvolvimento de tecnologias educacionais, em que a interface funciona como próprio espaço de acesso ao conhecimento de modo que qualidade, clareza e previsibilidade interferem diretamente na experiência de aprendizagem.
+Nesse contexto, destaca-se a Experiência do Usuário (UX), conceito consolidado por Don Norman e Jakob Nielsen, que reúne princípios voltados a compreender e projetar sistemas alinhados às necessidades, expectativas e comportamentos de quem interage com a tecnologia. A UX mantém relação estreita com a usabilidade, compreendida como a capacidade de o sistema ser compreensível, eficiente e satisfatório em operação. Conforme Rizzato e Silva (2022, p. 46), projetar com usabilidade significa oferecer experiência direta, na qual as consequências das ações sejam claras e o sistema não exija esforço interpretativo excessivo ou suporte externo constante.
+Ademais, a usabilidade não pode ser dissociada da finalidade educacional: mesmo tecnologicamente funcional, uma interface excessivamente complexa ou confusa pode criar barreiras ao aprendizado. Para analisar e qualificar as interações, recorre-se com frequência à Avaliação Heurística método proposto por Nielsen e Molich (1990) e consolidado por Nielsen (1994), que avalia a qualidade da interface com base em princípios norteadores. As 10 Heurísticas de Nielsen (1994), adotadas neste trabalho, são:
+•	Visibilidade do status do sistema: o usuário deve ser informado de forma clara e oportuna sobre o que está ocorrendo;
+•	Correspondência com o mundo real: empregar linguagem, símbolos e conceitos familiares, evitando terminologia hermética;
+•	Controle e liberdade ao usuário: oferecer formas seguras de desfazer, refazer ou interromper ações;
+•	Consistência e padronização: manter padrões visuais e funcionais uniformes, evitando ambiguidades;
+•	Prevenção de erros: projetar de modo a evitar situações problemáticas antes que elas ocorram;
+•	Reconhecimento em vez de memorização: manter opções visíveis ou de fácil recuperação, reduzindo a carga cognitiva;
+•	Flexibilidade e eficiência de uso: adaptar-se tanto a usuários iniciantes quanto experientes;
+•	Design estético e minimalista: evitar elementos irrelevantes e priorizar organização clara;
+•	Ajuda para reconhecimento, diagnóstico e recuperação de erros: disponibilizar mensagens claras, capazes de indicar a natureza do problema e sua respectiva solução;
+•	Ajuda e documentação: apresentar informações acessíveis, práticas e vinculadas às tarefas em andamento.
+Em sistemas inclusivos, contudo, a usabilidade por si só não basta: é essencial consolidar a acessibilidade digital. O marco legal norteador é a Lei nº 10.098/2000, que estabelece diretrizes gerais para a promoção da acessibilidade e a eliminação de barreiras na comunicação e na informação. Embora correlacionados, usabilidade e acessibilidade são conceitos distintos: a primeira visa à facilidade geral de uso; a segunda busca remover barreiras para que pessoas com diferentes características sensoriais, motoras, intelectuais ou neurológicas possam perceber, navegar, compreender e interagir de forma efetiva não como ajuste tardio, mas como princípio desde a concepção.
+A acessibilidade compreende, portanto: navegação independente de dispositivo, suporte a tecnologias assistivas, estrutura semântica, contraste adequado, textos alternativos, organização coerente da leitura, possibilidade de ajustes e múltiplas formas de feedback. Essa perspectiva alinha-se perfeitamente à compreensão de deficiência adotada neste trabalho: a interface, por si só, não deve gerar barreiras comunicacionais ou estruturais.
+A convergência entre IHC, UX, usabilidade, avaliação heurística e acessibilidade fortalece a proposta: os princípios de interação guiam clareza e intuição; a acessibilidade, respaldada pela legislação, garante condições amplas de participação; e a avaliação sistemática permite identificar e corrigir limitações. Articula-se, assim, com as perspectivas de construção social da deficiência e de mediação pedagógica anteriormente expostas: uma tecnologia educacional verdadeiramente inclusiva não apenas transmite conteúdos, mas cria condições estruturais para que todos participem, construam e aprendam em igualdade de condições.
+3 OBJETIVOS 
+3.1 Objetivo Geral
+Promover o ensino introdutório de lógica de programação para pessoas com deficiência de forma lúdica, visual, interativa e acessível, por meio do desenvolvimento de uma interface web baseada em blocos de programação visual, que possibilite a criação e execução de sequências de comandos por meio de um personagem ou robô virtual, integrando recursos de acessibilidade e feedback multimodal. 
+
+
+3.2 Objetivos Específicos
+•	Implementar blocos de programação visual destinados ao ensino de conceitos fundamentais de lógica de programação, como movimentação, direção, repetição, condições e controle de fluxo;
+•	Desenvolver um personagem ou robô virtual capaz de executar, na tela, as instruções programadas pelo usuário, proporcionando feedback visual sobre o resultado da sequência criada;
+•	Implementar recursos de acessibilidade, incluindo compatibilidade com leitores de tela, navegação por teclado, textos alternativos, foco visual, alto contraste e elementos com identificação semântica adequada;
+•	Proporcionar diferentes formas de feedback durante a interação, incluindo estímulos visuais, sonoros e, quando aplicável, recursos compatíveis com tecnologias assistivas;
+•	Adaptar a interface para atender às diferentes necessidades de pessoas com deficiência visual, motora, intelectual e neurodivergências, priorizando simplicidade, previsibilidade e facilidade de interação;
+•	Desenvolver atividades e desafios progressivos que possibilitem ao usuário compreender conceitos básicos de lógica de programação por meio da experimentação e da resolução de problemas;
+•	Validar a usabilidade, acessibilidade e eficácia pedagógica da aplicação em contextos de educação inclusiva, considerando a experiência dos usuários e as necessidades educacionais identificadas.
+4 METODOLOGIA
+A presente pesquisa caracteriza-se como de natureza aplicada, com abordagem mista e caráter exploratório e descritivo. Seu desenvolvimento ocorreu entre 2025 e 2026, compreendendo as etapas de levantamento bibliográfico, observação em campo, coleta de dados, desenvolvimento da interface web e análise da proposta. A investigação está voltada para a criação de uma interface web acessível destinada ao ensino introdutório de lógica de programação.
+Os procedimentos metodológicos adotados envolveram pesquisa bibliográfica, observação em campo, desenvolvimento da interface web e análise da proposta. A pesquisa bibliográfica fundamentou os conceitos relacionados à educação inclusiva, aprendizagem, Tecnologia Assistiva, acessibilidade e programação visual, com base em publicações e referenciais técnicos produzidos entre 1994 e 2026.
+A observação em campo contribuiu para identificar necessidades relacionadas à inclusão e ao uso de tecnologias educacionais, abrangendo diferentes contextos institucionais nos municípios de Feira de Santana e Irará — entre eles o Centro Estadual de Educação Profissional Áureo de Oliveira Filho (CEEP), o Centro de Ciência e Tecnologia em Energia e Sustentabilidade da Universidade Federal do Recôncavo da Bahia (CETENS/UFRB), o Centro de Apoio Pedagógico Especializado (CAPDV) e a Associação de Pais e Amigos de Atípicos do Município de Irará (APADAMI). Com base nesses levantamentos e na fundamentação teórica, foi desenvolvida a interface web, que utiliza programação visual por blocos e um personagem ou robô virtual para representar e demonstrar a execução dos comandos.
+O desenvolvimento da interface constituiu uma das etapas centrais da pesquisa, sendo orientado pelos princípios de acessibilidade, usabilidade, Experiência do Usuário (UX) e design inclusivo. A aplicação foi estruturada para permitir que o usuário selecione, organize e execute comandos de programação visual, recebendo retorno sobre as ações realizadas pelo sistema.
+A abordagem mista possibilitou integrar os dados obtidos ao longo da investigação às informações qualitativas identificadas em campo, permitindo uma análise mais ampla da proposta ao considerar tanto informações mensuráveis quanto percepções, necessidades e características observadas.
+Para o desenvolvimento da aplicação web do projeto SNACK BIT, foi adotada uma metodologia de construção progressiva, baseada na elaboração gradual do sistema e na implementação contínua de melhorias. Essa forma de desenvolvimento permitiu que a aplicação fosse construída por etapas, possibilitando testar funcionalidades, identificar dificuldades e realizar ajustes conforme as necessidades observadas.
+Inicialmente, foram definidos os principais objetivos da aplicação, com foco na criação de uma ferramenta que auxiliasse no ensino de lógica de programação de maneira visual e acessível. A partir dessa definição, foi desenvolvida uma primeira versão do sistema, contendo os recursos básicos de interação, como os blocos de comandos e a representação visual dos movimentos do robô.
+Com o avanço do trabalho, a aplicação passou por sucessivas etapas de implementação, nas quais novas funcionalidades foram adicionadas e as anteriores foram testadas. Foram desenvolvidos recursos como comandos de movimentação do robô, estruturas de repetição, identificação de obstáculos, botões de avanço, desafios em formato de labirinto, diferentes níveis de dificuldade, mensagens de feedback e elementos voltados à acessibilidade.
+Os testes possibilitaram identificar situações em que determinadas funcionalidades não funcionavam conforme esperado ou em que alguns elementos poderiam dificultar a compreensão e a interação do usuário. A partir dessas observações, foram realizadas alterações, novos testes e ajustes, de modo que cada versão representasse um avanço em relação à anterior.
+Além das funcionalidades, foram também aprimorados a interface e a experiência de uso. Elementos visuais, comandos e formas de interação foram ajustados com o objetivo de tornar o sistema mais simples de compreender e utilizar, mantendo inalterado o propósito de ensinar lógica de programação por meio de recursos visuais.
+Dessa forma, a metodologia adotada mostrou-se compatível com os objetivos do SNACK BIT, permitindo que a aplicação fosse construída e aprimorada à medida que as necessidades eram identificadas. Essa forma de desenvolvimento contribuiu para que o sistema evoluísse ao longo do processo, resultando em uma ferramenta educacional mais intuitiva e alinhada à proposta de ensinar lógica de programação de forma visual e inclusiva. A tela esta no anexo B
+4.1 Locais da Pesquisa e Contexto da Aplicação
+A investigação foi realizada em quatro espaços institucionais, localizados nos municípios de Feira de Santana e Irará, no estado da Bahia, abrangendo diferentes contextos educacionais e de atendimento especializado. A escolha desses espaços possibilitou observar diferentes realidades relacionadas à educação, à formação tecnológica e à inclusão.
+Embora a análise de campo tenha abrangido um público mais amplo e variado, compreendendo diferentes idades e perfis, o projeto foi direcionado e adaptado para um público mais jovem, definindo-se como público-alvo principal pessoas com deficiência e público da educação especial na faixa etária entre 8 e 12 anos. O protótipo, denominado Snack Bit: Pausa para Lógica de Programação, foi desenvolvido como uma ferramenta didática estruturada, simplificada e adequada a essa faixa etária.
+Os espaços considerados na pesquisa foram:
+●	Centro Estadual de Educação Profissional Áureo de Oliveira Filho do Centro Baiano (CEEP – Feira de Santana): instituição de educação profissional, inserida no contexto da formação técnica e educacional de estudantes;
+●	Centro de Ciência e Tecnologia em Energia e Sustentabilidade da Universidade Federal do Recôncavo da Bahia (CETENS/UFRB – Feira de Santana): unidade acadêmica voltada ao ensino, à pesquisa e à extensão, constituindo um contexto de formação superior e desenvolvimento científico e tecnológico;
+●	Centro de Apoio Pedagógico Especializado (CAPDV – Feira de Santana): espaço destinado ao atendimento e ao apoio pedagógico especializado, relacionado às práticas de educação inclusiva e às necessidades educacionais específicas;
+●	Associação de Pais e Amigos de Atípicos do Município de Irará (APADAMI Irará - BA): organização voltada ao atendimento, acolhimento e apoio a pessoas atípicas e suas famílias, constituindo um contexto relevante para a observação de demandas relacionadas à inclusão, acessibilidade e utilização de recursos educacionais.
+A diversidade dos espaços investigados possibilitou considerar diferentes perspectivas sobre educação, tecnologia e inclusão. As observações realizadas nesses contextos contribuíram para orientar aspectos relacionados à concepção da interface, à organização dos recursos de interação e à definição de características de acessibilidade.
+Quadro 2 – Resumo dos locais de pesquisa
+Tabela
+Instituição	Município	Tipo de contexto	Contribuição principal
+CEEP – Feira de Santana	Feira de Santana	Educação profissional	Contexto técnico e educacional
+CETENS / UFRB	Feira de Santana	Ensino, pesquisa e extensão	Base científica e tecnológica
+CAPEDV	Feira de Santana	Atendimento pedagógico especializado	Necessidades inclusivas e pedagógicas
+APADAMI	Irará	Apoio e atendimento comunitário	Realidade social e demandas práticas
+Fonte: Elaborado pelo autor (2026).
+
+5 RESULTADOS
+5.1 Caracterização dos participantes
+O questionário aplicado como instrumento de coleta de dados possibilitou identificar características gerais dos participantes, considerando faixa etária, dificuldades ou limitações relacionadas ao processo de aprendizagem, conhecimentos prévios sobre lógica de programação e interesse em aprender a programar. Ao todo, foram registradas 38 respostas, provenientes de participantes vinculados a diferentes contextos educacionais e institucionais.
+Em relação à faixa etária, observou-se predominância de participantes entre 18 e 28 anos, enquanto também houve participação de adolescentes e crianças, além de pessoas com 40 anos ou mais. Entre os respondentes, foram identificados participantes com idades declaradas de 22 e 29 anos e outros que selecionaram as faixas etárias disponíveis no formulário.
+Essa diversidade é relevante para a pesquisa porque demonstra que as percepções sobre o ensino de programação e as necessidades de acessibilidade não estão restritas a um único grupo etário. Entretanto, conforme estabelecido na metodologia, embora a investigação de campo tenha contemplado diferentes perfis, o público-alvo principal do protótipo foi definido como pessoas com deficiência e público da educação especial entre 8 e 12 anos.
+5.2 Dificuldades e necessidades relacionadas à aprendizagem
+Os dados revelaram a presença de diferentes dificuldades relacionadas ao processo de aprendizagem. Entre as respostas aparecem dificuldades de leitura, escrita e interpretação textual, limitações relacionadas à baixa visão ou cegueira, dificuldades de motricidade fina ou mobilidade e limitações relacionadas à audição ou surdez. Também foram mencionadas dificuldades específicas, como cálculos matemáticos, falta de atenção e lentidão na compreensão.
+Algumas respostas apresentam situações particularmente relevantes para o desenvolvimento de uma ferramenta educacional acessível. Foram relatados, por exemplo, casos de baixa visão, astigmatismo, miopia e limitações relacionadas à mobilidade, além de dificuldades de leitura e interpretação.
+Esses resultados reforçam a necessidade de que uma ferramenta destinada ao ensino de programação considere diferentes formas de interação e acesso ao conteúdo. Nesse sentido, os dados obtidos dialogam diretamente com a proposta do Snack Bit, que incorpora recursos como navegação por teclado, identificação semântica, alto contraste, compatibilidade com leitores de tela e diferentes formas de feedback.
+
+5.3 Conhecimentos prévios sobre lógica de programação
+Em relação ao conhecimento sobre lógica de programação, observou-se uma heterogeneidade significativa entre os participantes.
+Parte dos respondentes declarou não possuir conhecimentos prévios ou apresentou respostas bastante elementares, como compreender a programação apenas como a utilização de comandos ou como uma forma de “mexer no computador”. Outros participantes demonstraram compreensão mais estruturada, relacionando a lógica de programação à organização de soluções, à execução de programas e à comunicação com máquinas.
+Destaca-se a resposta de uma participante que apresentou uma compreensão mais elaborada do conceito, relacionando a lógica de programação à criação de sequências de comandos, organização de ideias, raciocínio lógico, condições, repetições e variáveis.
+Por outro lado, também foram registradas respostas como “nada”, “não sei”, “pouco” e “sei o básico”, evidenciando diferentes níveis de familiaridade com o tema.
+Esse resultado é particularmente importante para o projeto, uma vez que demonstra a necessidade de uma abordagem introdutória capaz de apresentar conceitos de programação de maneira gradual e visual, reduzindo a dependência inicial de conhecimentos prévios e de sintaxe textual.
+5.4 Interesse em aprender programação
+Quanto ao interesse em aprender a programar, os resultados indicaram uma tendência predominantemente favorável.
+Das 38 respostas, 22 participantes declararam interesse, 8 responderam “Talvez” e 8 responderam “Não”. Assim, aproximadamente 57,9% dos participantes demonstraram interesse direto em aprender a programar, enquanto 21,1% apresentaram interesse condicionado ou possibilidade de interesse e 21,1% não demonstraram interesse.
+Interesse em aprender a programar	Participantes	Percentual
+Sim	22	57,9%
+Talvez	8	21,1%
+Não	8	21,1%
+Total	38	100%
+Os dados demonstram que mais da metade dos participantes apresentou interesse direto pela aprendizagem de programação. Quando consideradas conjuntamente as respostas “Sim” e “Talvez”, observa-se que 30 participantes, correspondentes a aproximadamente 78,9% da amostra, demonstraram algum nível de abertura ou interesse pela aprendizagem de programação.
+Esse resultado contribui para sustentar a pertinência de uma proposta pedagógica que apresente a programação de maneira acessível, interativa e visual, especialmente para usuários que podem encontrar dificuldades diante de ambientes tradicionais baseados exclusivamente em código textual.
+5.5 Síntese dos resultados e relação com o desenvolvimento do Snack Bit
+Os resultados obtidos no questionário permitiram identificar três aspectos relevantes para o desenvolvimento da proposta: a diversidade das necessidades de aprendizagem, a heterogeneidade dos conhecimentos prévios e a existência de interesse significativo pela aprendizagem de programação.
+As respostas relacionadas às dificuldades de leitura, interpretação, visão, mobilidade e audição demonstram a importância da incorporação de recursos de acessibilidade desde a concepção da interface.
+Da mesma forma, a diversidade de conhecimentos prévios evidencia a necessidade de uma abordagem gradual. Enquanto alguns participantes demonstraram compreensão mais elaborada sobre programação, outros apresentaram pouco ou nenhum conhecimento sobre o tema.
+Por fim, o predomínio das respostas favoráveis ou potencialmente favoráveis ao aprendizado de programação indica a existência de receptividade à proposta. Dessa forma, os resultados do diagnóstico contribuíram para orientar o desenvolvimento do Snack Bit: Pausa para Lógica de Programação, especialmente quanto à necessidade de uma interface simples, visual, interativa e acessível.
+6. CONCLUSÕES
+
+O desenvolvimento do Snack Bit: Pausa para Lógica de Programação evidenciou a necessidade premente de estratégias educacionais inclusivas no campo da tecnologia. Constatou-se que, embora o ensino de programação esteja em expansão, persiste uma lacuna: poucas ferramentas conseguem traduzir conceitos abstratos do pensamento computacional em experiências concretas e acessíveis, por meio de linguagens visuais, sonoras e multissensoriais que atendam à diversidade humana. Diante de um modelo educacional historicamente excludente, torna-se fundamental democratizar o ensino de lógica de programação, adotando práticas lúdicas e acessíveis desde os primeiros anos de formação.
+A experiência demonstrou que interfaces projetadas com base no design inclusivo, na usabilidade e na Experiência do Usuário (UX) são capazes de reduzir barreiras sensoriais, motoras e cognitivas que frequentemente afastam pessoas com deficiência do aprendizado tecnológico. Ao considerar a diversidade de perfis, necessidades e contextos, o Snack Bit revela-se como uma alternativa pedagógica viável e transformadora. Ferramentas assim concebidas abrem caminho para que pessoas com deficiência deixem posições de exclusão e passem a participar ativamente da produção de conhecimento e do mercado de tecnologia, contribuindo para a construção de uma sociedade verdadeiramente equitativa.
+
+RESUMO
+Este trabalho aborda o ensino de lógica de programação voltado a pessoas com deficiência (PcD), propondo uma alternativa pedagógica inclusiva diante das barreiras históricas que marcam a trajetória dessa população no sistema educacional brasileiro. Fundamenta-se nas teorias de Aprendizagem Significativa, Formação Gradual das Ações Mentais e Construcionismo, articuladas à crítica sobre normalização e exclusão e às diretrizes da Lei Brasileira de Inclusão (nº 13.146/2015) e da Lei nº 10.098/2000 sobre acessibilidade. Apresenta-se o Snack Bit: Pausa para Lógica de Programação, aplicação web baseada em blocos visuais desenvolvida para ensinar conceitos fundamentais de computação de forma lúdica, interativa e acessível. A metodologia adota abordagem mista, de caráter exploratório-descritivo, combinando pesquisa bibliográfica, observação de campo, desenvolvimento técnico e avaliação com usuários. A plataforma incorpora recursos como navegação por teclado, compatibilidade com leitores de tela, alto contraste, identificação semântica e feedback multimodal (visual e sonoro). Conclui-se que representações visuais e sensoriais, apoiadas em princípios de design inclusivo e usabilidade, constituem caminho eficaz para mitigar barreiras de aprendizado, promovendo autonomia, desenvolvimento do pensamento computacional e inserção social de estudantes com deficiência na área de tecnologia.
+Palavras-chave: Educação Inclusiva; Tecnologia Assistiva; Lógica de Programação; Acessibilidade Web; Pensamento Computacional.
+
+
+
+
+
+ABSTRACT 
+his study addresses the teaching of programming logic for people with disabilities (PwD), proposing an inclusive pedagogical alternative to the historical barriers faced by this population in the Brazilian educational system. Grounded on the theoretical frameworks of Meaningful Learning, Galperin’s theory, and Constructionism, as well as on Foucault’s critique of normalization and the guidelines of the Brazilian Inclusion Law (Law No. 13.146/2015) and Law No. 10.098/2000 on accessibility, this paper introduces Snack Bit: Pausa para Lógica de Programação. It is a web-based visual block programming application designed to teach fundamental computing concepts in a playful, interactive, and accessible manner. The methodology adopts a mixed-methods approach of an exploratory and descriptive nature, combining literature review, field observation, technical development, and user evaluation. The platform features keyboard navigation, screen reader compatibility, high contrast, semantic identification, and multimodal (visual and auditory) feedback. It is concluded that visual and sensory representations supported by inclusive design and usability principles effectively mitigate learning barriers, fostering autonomy, computational thinking development, and the social inclusion of students with disabilities into the technology field.
+Keywords: Inclusive Education; Assistive Technology; Programming Logic; Web Accessibility; Computational Thinking.
+
+
+
+
+
+
+
+
+
+
+
+
+REFERÊNCIAS
+BERSCH, Rita; TONOLLI, José Carlos. Introdução ao conceito de Tecnologia Assistiva. Porto Alegre: CEDI, 2006.
+BRASIL. Lei nº 13.146, de 6 de julho de 2015. Institui a Lei Brasileira de Inclusão da Pessoa com Deficiência (Estatuto da Pessoa com Deficiência). Brasília, DF, 2015. Disponível em: http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm. Acesso em: 19 mai. 2026.
+BRASIL. Lei nº 9.394, de 20 de dezembro de 1996. Estabelece as diretrizes e bases da educação nacional. Brasília, DF, 1996. Disponível em: http://www.planalto.gov.br/ccivil_03/leis/l9394.htm. Acesso em: 10 mai. 2026.
+BRASIL. Lei nº 8.742, de 7 de dezembro de 1993. Lei Orgânica da Assistência Social (LOAS). Brasília, DF, 1993. Disponível em: https://www.planalto.gov.br/ccivil_03/leis/l8742compilado.htm. Acesso em: 15 mai. 2026.
+BRASIL. Ministério da Educação. Base Nacional Comum Curricular. Brasília, DF: MEC, 2018.
+BRITO, Sabrina. Nova cédula da libra homenageia o cientista Alan Turing. Veja, Ciência, 2021. Disponível em: https://veja.abril.com.br/ciencia/nova-cedula-da-libra-homenageia-o-cientista-alan-turing/. Acesso em: 10 mai. 2026.
+FOUCAULT, Michel. Nascimento da Biopolítica: curso dado no Collège de France (1978-1979). São Paulo: Martins Fontes, 2008.
+GALPERIN, Piotr. A Formação das Ações Mentais e dos Conceitos. Tradução e organização de Nuances Pedagógicas. São Paulo: Expressão Popular, 2009.
+OLIVEIRA, Marcos. Biopolítica e as Práticas de Exclusão Social no Brasil. Rio de Janeiro: Editora Cidadania, 2006.
+INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE). Pessoas com deficiência têm menor acesso à educação, ao trabalho e à renda. Texto: Irene Gomes; Arte: Brisa Gil. Agência IBGE Notícias, Rio de Janeiro, 7 jul. 2023. Atualizado em: 16 ago. 2024. Disponível em: https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/37318-pessoas-com-deficiencia-tem-menor-acesso-a-educacao-ao-trabalho-e-a-renda. Acesso em: 26 ago. 2026.
+MACEDO, Marasella del Cármen Silva Rodrigues; AIMI, Deusodete Rita Silva; TADA, Iracema Neno Cecilio; SOUZA, Ana Maria de Lima. Histórico da inclusão escolar: uma discussão entre texto e contexto. Psicologia em Estudo, Maringá, v. 19, n. 2, p. 179-189, abr./jun. 2014.  
+NIELSEN, Jakob. Usability engineering. San Francisco: Morgan Kaufmann, 1994.
+SOUSA, Marcos Paulo Moreira de et al. Aprendizagem significativa proposta por David Ausubel e sua contribuição na EPT. SciELO Preprints, v. 1, p. 1-13, 6 jun. 2025. DOI: https://doi.org/10.1590/SciELOPreprints.12096. Disponível em: https://doi.org/10.1590/SciELOPreprints.12096. Acesso em: 26 ago. 2026. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ANEXOS
+ A — Questionário de Diagnóstico de Campo
+Instituição de Origem:
+[ ] Universidade Federal do Recôncavo da Bahia (UFRB)
+[ ] Centro Estadual de Educação Profissional Áureo de Oliveira Filho (CEEP)
+[ ] Associação de Pais e Amigos de Atípicos do Município de Irará (APADAMI)
+[ ] Outra: __________________________________________________
+Faixa Etária:
+[ ] 8 a 12 anos | [ ] 13 a 17 anos | [ ] 18 a 28 anos | [ ] 40 anos ou mais
+Dificuldades ou Limitações Autodeclaradas no Processo de Aprendizagem:
+[ ] Dificuldades de leitura, escrita e interpretação textual
+[ ] Limitações de motricidade fina, preensão ou pinça tátil
+[ ] Baixa visão ou cegueira
+[ ] Limitação auditiva ou surdez
+Especifique se houver outra: __________________________________________________
+Avaliando Conhecimentos Prévios:
+O que você compreende a respeito do conceito de Lógica de Programação e Pensamento Computacional?
+Você manifesta interesse em aprender a programar robôs e computadores?
+[ ] Sim | [ ] Não | [ ] Talvez
+
+
+
+
+
+
+
+
+
+
+
+B Interface
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	,
+
+
+
+ 
+ 
+
